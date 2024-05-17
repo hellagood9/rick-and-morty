@@ -3,7 +3,7 @@ import {
   getAllCharacters,
   getCharacterById,
   searchCharacters,
-} from '../../services/api/characters';
+} from '@services/api/characters';
 
 export const fetchCharacters = createAsyncThunk(
   'characters/fetchCharacters',

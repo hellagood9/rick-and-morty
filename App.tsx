@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-import {globalStyles} from './src/styles/global';
+import {globalStyles} from '@styles/global';
 
 function App(): React.JSX.Element {
   return (
