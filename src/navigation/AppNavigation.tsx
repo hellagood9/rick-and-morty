@@ -25,8 +25,6 @@ const AppNavigation = () => (
           headerShadowVisible: false,
           headerTitleAlign: 'center',
           presentation: 'modal',
-
-          // Android
           animationTypeForReplace: 'push',
           animation: 'fade_from_bottom',
         }}

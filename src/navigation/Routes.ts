@@ -9,14 +9,14 @@ import {
   NativeStackNavigationOptions,
 } from '@react-navigation/native-stack';
 
-export type AppNavigationRoutes = {
+export type Routes = {
   Home: undefined;
-  Detail: undefined;
+  Detail: {id: number};
   Favorites: undefined;
 };
 
 export type ParentStack = TypedNavigator<
-  AppNavigationRoutes,
+  Routes,
   StackNavigationState<ParamListBase>,
   NativeStackNavigationOptions,
   NativeStackNavigationEventMap,
