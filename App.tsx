@@ -1,14 +1,13 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import {globalStyles} from '@styles/global';
+import {Provider} from 'react-redux';
+import AppNavigation from '@navigation/navigation';
+import store from '@state/store';
 
 function App(): React.JSX.Element {
   return (
-    <View style={globalStyles.screenContainer}>
-      <View style={globalStyles.content}>
-        <Text style={globalStyles.sectionTitle}>Rick and Morty</Text>
-      </View>
-    </View>
+    <Provider store={store}>
+      <AppNavigation />
+    </Provider>
   );
 }
 
