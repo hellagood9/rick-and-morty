@@ -4,13 +4,14 @@ import {
   fetchCharacterById,
   fetchSearchCharacters,
 } from './charactersThunks';
+import {Character} from '@models/Character';
 
 interface CharactersState {
-  items: any[];
+  items: Character[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null | undefined;
-  selectedCharacter: any | null;
-  searchResults: any[];
+  selectedCharacter: Character | null;
+  searchResults: Character[];
 }
 
 const initialState: CharactersState = {
