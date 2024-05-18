@@ -14,10 +14,12 @@ module.exports = function (api) {
             '@services': './src/services',
             '@state': './src/state',
             '@styles': './src/styles',
+            '@models': './src/models',
             '@utils': './src/utils',
           },
         },
       ],
+      'react-native-reanimated/plugin',
     ],
   };
 };
