@@ -1,9 +1,12 @@
 import {StyleSheet} from 'react-native';
+import fontWeights from '@constants/fontWeights';
+import fonts from '@constants/fonts';
+import spacing from '@constants/spacing';
 
 export const globalStyles = StyleSheet.create({
   screenContainer: {
     flex: 1,
-    paddingHorizontal: 32,
+    paddingHorizontal: spacing.xLarge,
   },
   content: {
     flex: 1,
@@ -11,8 +14,8 @@ export const globalStyles = StyleSheet.create({
     justifyContent: 'center',
   },
   sectionTitle: {
-    fontSize: 32,
-    fontWeight: '600',
-    fontFamily: 'KodeMono-SemiBold',
+    fontSize: fonts.size.title,
+    fontWeight: fontWeights.semiBold,
+    fontFamily: fonts.family.kodeMonoSemiBold,
   },
 });

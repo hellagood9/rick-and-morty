@@ -1,0 +1,46 @@
+const fonts = {
+  size: {
+    xSmall: 10,
+    small: 12,
+    smallMedium: 14,
+    medium: 16,
+    regular: 18,
+    large: 20,
+    xLarge: 24,
+    xxLarge: 28,
+    title: 32,
+    subTitle: 36,
+    header: 40,
+    banner: 48,
+    giant: 56,
+  },
+  lineHeight: {
+    xSmall: 14,
+    small: 16,
+    smallMedium: 18,
+    medium: 20,
+    regular: 24,
+    large: 28,
+    xLarge: 32,
+    xxLarge: 36,
+    title: 40,
+    subTitle: 44,
+    header: 48,
+    banner: 56,
+    giant: 64,
+  },
+  family: {
+    base: 'System',
+    bold: 'System-Bold',
+    semiBold: 'System-SemiBold',
+    light: 'System-Light',
+    italic: 'System-Italic',
+    // custom fonts here
+    kodeMonoBold: 'KodeMono-Bold',
+    kodeMonoSemiBold: 'KodeMono-SemiBold',
+    kodeMonoMedium: 'KodeMono-Medium',
+    kodeMonoRegular: 'KodeMono-Regular',
+  },
+};
+
+export default fonts;

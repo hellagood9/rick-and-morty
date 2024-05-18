@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import HomeScreen from '@screens/HomeScreen';
 import FavoritesScreen from '@screens/FavoritesScreen';
+import iconSizes from '@constants/icons';
 
 const Tab = createBottomTabNavigator();
 
@@ -13,7 +14,7 @@ const TabBarIcon = ({
 }: {
   name: React.ComponentProps<typeof Icon>['name'];
   color: string;
-}) => <Icon name={name} color={color} size={24} />;
+}) => <Icon name={name} color={color} size={iconSizes.medium} />;
 
 const createTabBarIcon =
   (name: string) =>
