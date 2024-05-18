@@ -13,5 +13,6 @@ export const globalStyles = StyleSheet.create({
   sectionTitle: {
     fontSize: 32,
     fontWeight: '600',
+    fontFamily: 'KodeMono-SemiBold',
   },
 });
