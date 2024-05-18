@@ -15,7 +15,6 @@
 		3C1E0346E4F0E96D9D6651F9 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 66EFA082A823A9D6575D528E /* PrivacyInfo.xcprivacy */; };
 		7699B88040F8A987B510C191 /* libPods-rickAndMorty-rickAndMortyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-rickAndMorty-rickAndMortyTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		849F7AAFE6A94C26B5F5E72A /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = F7F2CC926176421CAAA2813F /* fonts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +47,6 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = rickAndMorty/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-rickAndMorty-rickAndMortyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rickAndMorty-rickAndMortyTests.release.xcconfig"; path = "Target Support Files/Pods-rickAndMorty-rickAndMortyTests/Pods-rickAndMorty-rickAndMortyTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F7F2CC926176421CAAA2813F /* fonts */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = fonts; path = ../src/assets/fonts; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +157,6 @@
 		EEC23BBBAE3C416B9CE387D4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F7F2CC926176421CAAA2813F /* fonts */,
 			);
 			name = Resources;
 			path = "";
@@ -261,7 +258,6 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3C1E0346E4F0E96D9D6651F9 /* PrivacyInfo.xcprivacy in Resources */,
-				849F7AAFE6A94C26B5F5E72A /* fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
