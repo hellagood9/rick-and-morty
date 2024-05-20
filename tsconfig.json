@@ -6,12 +6,13 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@constants/*": ["src/constants/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@models/*": ["src/models/*"],
       "@navigation/*": ["src/navigation/*"],
       "@screens/*": ["src/screens/*"],
       "@services/*": ["src/services/*"],
       "@state/*": ["src/state/*"],
       "@styles/*": ["src/styles/*"],
-      "@models/*": ["src/models/*"],
       "@utils/*": ["src/utils/*"]
     }
   }
