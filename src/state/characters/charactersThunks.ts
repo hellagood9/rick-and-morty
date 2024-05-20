@@ -8,9 +8,13 @@ import {
 
 export const fetchCharacters = createAsyncThunk(
   'characters/fetchCharacters',
-  async () => {
-    const response = await getAllCharacters();
-    return response.data.results;
+  async (page: number = 1) => {
+    const response = await getAllCharacters(page);
+
+    return {
+      characters: response.data.results,
+      info: response.data.info,
+    };
   },
 );
 

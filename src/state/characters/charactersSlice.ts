@@ -13,6 +13,12 @@ interface CharactersState {
   selectedCharacter: Character | null;
   episodes: Episode[];
   searchResults: Character[];
+  info: {
+    count: number;
+    pages: number;
+    next: string | null;
+    prev: string | null;
+  };
 }
 
 const initialState: CharactersState = {
@@ -22,6 +28,12 @@ const initialState: CharactersState = {
   selectedCharacter: null,
   episodes: [],
   searchResults: [],
+  info: {
+    count: 0,
+    pages: 0,
+    next: null,
+    prev: null,
+  },
 };
 
 const charactersSlice = createSlice({
@@ -35,7 +47,8 @@ const charactersSlice = createSlice({
       })
       .addCase(fetchCharacters.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.items = action.payload;
+        state.items = [...state.items, ...action.payload.characters];
+        state.info = action.payload.info;
       })
       .addCase(fetchCharacters.rejected, (state, action) => {
         state.status = 'failed';

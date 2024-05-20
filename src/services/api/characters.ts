@@ -2,7 +2,8 @@ import axios from 'axios';
 
 const BASE_URL = 'https://rickandmortyapi.com/api';
 
-export const getAllCharacters = () => axios.get(`${BASE_URL}/character`);
+export const getAllCharacters = (page: number = 1) =>
+  axios.get(`${BASE_URL}/character?page=${page}`);
 
 export const getCharacterById = (id: number) =>
   axios.get(`${BASE_URL}/character/${id}`);
