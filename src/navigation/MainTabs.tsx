@@ -2,7 +2,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import HomeScreen from '@screens/HomeScreen';
+import CharactersScreen from '@screens/CharactersScreen';
 import FavoritesScreen from '@screens/FavoritesScreen';
 import iconSizes from '@constants/icons';
 
@@ -41,10 +41,10 @@ function BottomTabs() {
         tabBarInactiveTintColor: 'pink',
       }}>
       <Tab.Screen
-        name="Home"
-        component={HomeScreen}
+        name="Characters"
+        component={CharactersScreen}
         options={{
-          tabBarIcon: createTabBarIcon('home'),
+          tabBarIcon: createTabBarIcon('account-group'),
         }}
       />
       <Tab.Screen

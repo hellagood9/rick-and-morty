@@ -3,6 +3,7 @@ import {
   getAllCharacters,
   getCharacterById,
   searchCharacters,
+  getEpisodesByIds,
 } from '@services/api/characters';
 
 export const fetchCharacters = createAsyncThunk(
@@ -16,8 +17,18 @@ export const fetchCharacters = createAsyncThunk(
 export const fetchCharacterById = createAsyncThunk(
   'characters/fetchCharacterById',
   async (id: number) => {
-    const response = await getCharacterById(id);
-    return response.data;
+    const characterResponse = await getCharacterById(id);
+    const character = characterResponse.data;
+
+    const episodeIds = character.episode.map(
+      (ep: string) => ep.split('/').pop()!,
+    );
+    const episodesResponse = await getEpisodesByIds(episodeIds);
+    const episodes = Array.isArray(episodesResponse.data)
+      ? episodesResponse.data
+      : [episodesResponse.data];
+
+    return {character, episodes};
   },
 );
 

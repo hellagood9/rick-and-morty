@@ -1,5 +1,6 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text, View} from '@components/common';
+
 import {globalStyles} from '@styles/global';
 
 function FavoritesScreen(): React.JSX.Element {

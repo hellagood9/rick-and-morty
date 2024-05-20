@@ -5,8 +5,9 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import MainTabs from '@navigation/MainTabs';
 import DetailScreen from '@screens/DetailScreen';
+import {Routes} from './Routes';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<Routes>();
 
 const AppNavigation = () => (
   <NavigationContainer>
@@ -14,7 +15,7 @@ const AppNavigation = () => (
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name="Main" component={MainTabs} />
+      <Stack.Screen name="MainTabs" component={MainTabs} />
       <Stack.Screen
         name="Detail"
         component={DetailScreen}

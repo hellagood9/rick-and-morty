@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   ParamListBase,
   StackNavigationState,
@@ -10,9 +9,9 @@ import {
 } from '@react-navigation/native-stack';
 
 export type Routes = {
-  Home: undefined;
-  Detail: {id: number};
+  MainTabs: undefined;
   Favorites: undefined;
+  Detail: {id: number};
 };
 
 export type ParentStack = TypedNavigator<

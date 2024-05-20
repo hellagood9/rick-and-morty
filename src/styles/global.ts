@@ -6,7 +6,7 @@ import spacing from '@constants/spacing';
 export const globalStyles = StyleSheet.create({
   screenContainer: {
     flex: 1,
-    paddingHorizontal: spacing.xLarge,
+    paddingHorizontal: spacing.medium,
   },
   content: {
     flex: 1,

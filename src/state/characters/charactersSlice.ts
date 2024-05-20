@@ -4,13 +4,14 @@ import {
   fetchCharacterById,
   fetchSearchCharacters,
 } from './charactersThunks';
-import {Character} from '@models/Character';
+import {Character, Episode} from '@models/Character';
 
 interface CharactersState {
   items: Character[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null | undefined;
   selectedCharacter: Character | null;
+  episodes: Episode[];
   searchResults: Character[];
 }
 
@@ -19,6 +20,7 @@ const initialState: CharactersState = {
   status: 'idle',
   error: null,
   selectedCharacter: null,
+  episodes: [],
   searchResults: [],
 };
 
@@ -40,7 +42,8 @@ const charactersSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(fetchCharacterById.fulfilled, (state, action) => {
-        state.selectedCharacter = action.payload;
+        state.selectedCharacter = action.payload.character;
+        state.episodes = action.payload.episodes;
       })
       .addCase(fetchSearchCharacters.fulfilled, (state, action) => {
         state.searchResults = action.payload;
