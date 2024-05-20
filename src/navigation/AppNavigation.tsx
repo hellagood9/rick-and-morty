@@ -15,19 +15,24 @@ const AppNavigation = () => (
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name="MainTabs" component={MainTabs} />
+      <Stack.Screen
+        name="MainTabs"
+        component={MainTabs}
+        options={{
+          title: 'Characters',
+        }}
+      />
       <Stack.Screen
         name="Detail"
         component={DetailScreen}
         options={{
+          title: 'Details',
           headerShown: Platform.OS === 'ios' ? false : true,
           headerTransparent: true,
           headerTintColor: 'yellow',
           headerShadowVisible: false,
           headerTitleAlign: 'center',
-          presentation: 'modal',
-          animationTypeForReplace: 'push',
-          animation: 'fade_from_bottom',
+          presentation: Platform.OS === 'ios' ? 'modal' : 'card',
         }}
       />
     </Stack.Navigator>

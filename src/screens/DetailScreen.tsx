@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {ActivityIndicator, StyleSheet} from 'react-native';
+import {ActivityIndicator} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {Routes} from '@navigation/Routes';
@@ -8,7 +8,8 @@ import {AppDispatch, RootState} from '@state/store';
 import {globalStyles} from '@styles/global';
 import CharacterDetail from '@components/CharacterDetail';
 
-import {View, Text, SafeAreaView} from '@components/common';
+import {View, Text} from '@components/common';
+import ScreenContainer from '@components/ScreenContainer';
 
 type Props = NativeStackScreenProps<Routes, 'Detail'>;
 
@@ -47,18 +48,12 @@ const DetailScreen = ({route}: Props) => {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <ScreenContainer>
       <View style={globalStyles.screenContainer}>
         <CharacterDetail character={character} episodes={episodes} />
       </View>
-    </SafeAreaView>
+    </ScreenContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default DetailScreen;
