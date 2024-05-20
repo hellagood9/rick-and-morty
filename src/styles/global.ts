@@ -17,5 +17,7 @@ export const globalStyles = StyleSheet.create({
     fontSize: fonts.size.title,
     fontWeight: fontWeights.semiBold,
     fontFamily: fonts.family.kodeMonoSemiBold,
+    marginVertical: spacing.large,
+    paddingHorizontal: spacing.medium,
   },
 });

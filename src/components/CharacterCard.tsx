@@ -5,6 +5,7 @@ import {Character} from '@models/Character';
 
 import {Image, TouchableOpacity, StyleSheet} from 'react-native';
 import {View, Text} from '@components/common';
+import FavoriteButton from '@components/FavoriteButton';
 
 interface Props {
   character: Character;
@@ -15,6 +16,7 @@ const CharacterCard = ({character, onPress}: Props) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.touchable}>
       <View style={styles.container}>
+        <FavoriteButton character={character} />
         <Image source={{uri: character.image}} style={styles.image} />
 
         <Text style={styles.text}>{character.name}</Text>

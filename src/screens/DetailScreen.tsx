@@ -9,23 +9,25 @@ import CharacterDetail from '@components/CharacterDetail';
 import {View, Text} from '@components/common';
 import ScreenContainer from '@components/ScreenContainer';
 import {useAppDispatch, useAppSelector} from '@state/hooks';
+import FavoriteButton from '@components/FavoriteButton';
 
 type Props = NativeStackScreenProps<Routes, 'Detail'>;
 
 const DetailScreen = ({route}: Props) => {
-  const {id} = route.params;
+  const {id: characterId} = route.params;
 
   const dispatch = useAppDispatch();
   const character = useAppSelector(state => state.characters.selectedCharacter);
   const episodes = useAppSelector(state => state.characters.episodes);
+
   const status = useAppSelector(state => state.characters.status);
   const error = useAppSelector(state => state.characters.error);
 
   useEffect(() => {
-    if (id) {
-      dispatch(fetchCharacterById(id));
+    if (characterId) {
+      dispatch(fetchCharacterById(characterId));
     }
-  }, [dispatch, id]);
+  }, [dispatch, characterId]);
 
   useEffect(() => {
     if (error) {
@@ -48,6 +50,7 @@ const DetailScreen = ({route}: Props) => {
   return (
     <ScreenContainer>
       <View style={globalStyles.screenContainer}>
+        <FavoriteButton character={character} />
         <CharacterDetail character={character} episodes={episodes} />
       </View>
     </ScreenContainer>
