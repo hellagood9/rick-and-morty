@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {Character} from '@models/Character';
 import fonts from '@constants/fonts';
@@ -66,4 +66,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SearchResultItem;
+export default memo(SearchResultItem);

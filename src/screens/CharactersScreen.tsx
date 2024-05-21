@@ -1,16 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, FlatList} from 'react-native';
 
+import {useAppNavigation} from '@navigation/hooks/useAppNavigation';
+import {useAppDispatch, useAppSelector} from '@state/hooks';
 import {fetchCharacters} from '@state/characters';
 
-import {useAppNavigation} from '@navigation/hooks/useAppNavigation';
-
-import {useAppDispatch, useAppSelector} from '@state/hooks';
-
 import CharacterCard from '@components/CharacterCard';
-import {SafeAreaViewWithTabBar, View} from '@components/common/View';
-import spacing from '@constants/spacing';
 import SearchBar from '@components/SearchBar';
+import {SafeAreaViewWithTabBar, View} from '@components/common/View';
+
+import spacing from '@constants/spacing';
 
 const CharactersScreen = () => {
   const navigation = useAppNavigation();
@@ -19,8 +18,9 @@ const CharactersScreen = () => {
   const characters = useAppSelector(state => state.characters.items);
   const info = useAppSelector(state => state.characters.info);
   const status = useAppSelector(state => state.characters.status);
-
   const [page, setPage] = useState(1);
+
+  const RESULTS_PER_PAGE = 20;
 
   useEffect(() => {
     dispatch(fetchCharacters(page));
@@ -49,7 +49,7 @@ const CharactersScreen = () => {
 
       <FlatList
         data={characters}
-        keyExtractor={item => item.id.toString()}
+        keyExtractor={item => `character-${item.id}`}
         numColumns={2}
         renderItem={({item}) => (
           <CharacterCard
@@ -57,6 +57,9 @@ const CharactersScreen = () => {
             onPress={() => navigation.navigate('Detail', {id: item.id})}
           />
         )}
+        initialNumToRender={RESULTS_PER_PAGE}
+        maxToRenderPerBatch={RESULTS_PER_PAGE}
+        windowSize={5}
         onEndReached={loadMore}
         onEndReachedThreshold={0.5}
         ListFooterComponent={renderFooter}
