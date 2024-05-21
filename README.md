@@ -23,7 +23,7 @@ This is a demo application that uses the [Rick and Morty API](https://rickandmor
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/yourusername/rick-and-morty.git
+   git clone https://github.com/hellagood9/rick-and-morty
 
    ```
 
