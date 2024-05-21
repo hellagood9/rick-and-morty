@@ -47,7 +47,14 @@ const charactersSlice = createSlice({
       })
       .addCase(fetchCharacters.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.items = [...state.items, ...action.payload.characters];
+
+        const newCharacters: Character[] = action.payload.characters;
+        const existingCharacterIds = new Set(state.items.map(item => item.id));
+        const uniqueNewCharacters = newCharacters.filter(
+          (character: Character) => !existingCharacterIds.has(character.id),
+        );
+
+        state.items = [...state.items, ...uniqueNewCharacters];
         state.info = action.payload.info;
       })
       .addCase(fetchCharacters.rejected, (state, action) => {
@@ -58,8 +65,18 @@ const charactersSlice = createSlice({
         state.selectedCharacter = action.payload.character;
         state.episodes = action.payload.episodes;
       })
+      .addCase(fetchSearchCharacters.pending, state => {
+        state.status = 'loading';
+      })
       .addCase(fetchSearchCharacters.fulfilled, (state, action) => {
         state.searchResults = action.payload;
+        state.status = 'succeeded';
+        state.error = null;
+      })
+      .addCase(fetchSearchCharacters.rejected, (state, action) => {
+        state.searchResults = [];
+        state.status = 'failed';
+        state.error = action.payload as string;
       });
   },
 });

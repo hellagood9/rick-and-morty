@@ -54,8 +54,6 @@ const styles = StyleSheet.create({
   },
   touchable: {
     flex: 1,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'lightgray',
     margin: spacing.tiny,
   },
   removeButton: {

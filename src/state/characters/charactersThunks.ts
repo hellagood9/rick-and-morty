@@ -38,8 +38,16 @@ export const fetchCharacterById = createAsyncThunk(
 
 export const fetchSearchCharacters = createAsyncThunk(
   'characters/fetchSearchCharacters',
-  async (name: string) => {
-    const response = await searchCharacters(name);
-    return response.data.results;
+  async (name: string, {rejectWithValue}) => {
+    try {
+      const response = await searchCharacters(name);
+      if (response.data.results.length === 0) {
+        return rejectWithValue('No results found');
+      }
+      return response.data.results;
+    } catch (error) {
+      console.log('error', error);
+      return rejectWithValue('Failed to fetch characters');
+    }
   },
 );

@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
-import {TextInput, StyleSheet, Button, FlatList} from 'react-native';
-
-import {fetchSearchCharacters} from '@state/characters';
-
-import {View} from '@components/common';
+import React, {useEffect, useState} from 'react';
+import {StyleSheet, FlatList, View} from 'react-native';
+import {fetchCharacters, fetchSearchCharacters} from '@state/characters';
 import {useAppDispatch, useAppSelector} from '@state/hooks';
 import spacing from '@constants/spacing';
 import SearchResultItem from './SearchResultItem';
 import {useAppNavigation} from '@navigation/hooks/useAppNavigation';
+import debounce from 'lodash.debounce';
+import SearchInput from '@components/SearchInput';
+import NoResults from '@components/NoResults';
 
 const SearchBar = () => {
   const navigation = useAppNavigation();
@@ -16,34 +16,54 @@ const SearchBar = () => {
   const dispatch = useAppDispatch();
   const searchResults = useAppSelector(state => state.characters.searchResults);
 
-  const handleSearch = () => {
-    if (searchQuery.trim().length > 0) {
-      dispatch(fetchSearchCharacters(searchQuery));
+  useEffect(() => {
+    const debouncedSearch = debounce(query => {
+      if (query.trim().length > 0) {
+        dispatch(fetchSearchCharacters(query));
+      }
+    }, 300);
+
+    if (searchQuery.trim().length === 0) {
+      dispatch(fetchCharacters(1));
+    } else {
+      debouncedSearch(searchQuery);
     }
+
+    return () => {
+      debouncedSearch.cancel();
+    };
+  }, [searchQuery, dispatch]);
+
+  const handleResetSearch = () => {
+    setSearchQuery('');
+    dispatch(fetchCharacters(1));
   };
 
-  return (
-    <View style={styles.container}>
-      <View style={styles.content}>
-        <TextInput
-          style={styles.input}
-          placeholder="Search characters"
-          value={searchQuery}
-          onChangeText={setSearchQuery}
-        />
-        <Button title="Search" onPress={handleSearch} />
-      </View>
+  const results = searchQuery.trim().length === 0 ? [] : searchResults;
+  const isSearching = searchQuery.trim().length > 0;
 
-      <FlatList
-        data={searchResults}
-        keyExtractor={item => item.id.toString()}
-        renderItem={({item}) => (
-          <SearchResultItem
-            character={item}
-            onPress={() => navigation.navigate('Detail', {id: item.id})}
-          />
-        )}
+  return (
+    <View style={[styles.container, isSearching && styles.fullHeight]}>
+      <SearchInput
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        handleResetSearch={handleResetSearch}
       />
+
+      {isSearching && results.length === 0 ? (
+        <NoResults message="No results found" />
+      ) : (
+        <FlatList
+          data={results}
+          keyExtractor={item => item.id.toString()}
+          renderItem={({item}) => (
+            <SearchResultItem
+              character={item}
+              onPress={() => navigation.navigate('Detail', {id: item.id})}
+            />
+          )}
+        />
+      )}
     </View>
   );
 };
@@ -52,16 +72,17 @@ const styles = StyleSheet.create({
   container: {
     padding: spacing.small,
   },
-  content: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: 'white',
-    paddingHorizontal: spacing.medium,
+  fullHeight: {
+    height: '100%',
   },
-  input: {
+  noResultsContainer: {
     flex: 1,
-    height: 48,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  noResultsText: {
+    fontSize: 16,
+    color: 'gray',
   },
 });
 
