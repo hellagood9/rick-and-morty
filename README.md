@@ -1,79 +1,86 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Rick and Morty Demo App
 
-# Getting Started
+This is a demo application that uses the [Rick and Morty API](https://rickandmortyapi.com/) to display information about characters from the show. The app is built using React Native and supports both iOS and Android platforms.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Features
 
-## Step 1: Start the Metro Server
+- **Redux (RTK)**: State management using Redux Toolkit.
+- **Axios**: For making API requests.
+- **TypeScript**: Strongly typed programming language.
+- **Infinite Scroll**: Load more characters as you scroll down.
+- **Favorites**: A tab section to view favorite characters.
+- **App Icon and Splash Screen**: Custom icons and splash screens for iOS and Android.
+- **AsyncStorage**: Persistent storage for favorite characters.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Functionality
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- **GetAll Characters (Home View)**: Displays a list of all characters with infinite scroll.
+- **GetById Character (Detail View)**: Shows detailed information about a selected character.
+- **Search Character**: Search characters by name.
 
-```bash
-# using npm
-npm start
+## Installation
 
-# OR using Yarn
-yarn start
-```
+1. Clone the repository:
 
-## Step 2: Start your Application
+   ```sh
+   git clone https://github.com/yourusername/rick-and-morty.git
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+   ```
 
-### For Android
+2. Navigate to the project directory:
 
-```bash
-# using npm
-npm run android
+   ```sh
+   cd rick-and-morty
 
-# OR using Yarn
-yarn android
-```
+   ```
 
-### For iOS
+3. Install dependencies:
 
-```bash
-# using npm
-npm run ios
+   ```sh
+   yarn install
 
-# OR using Yarn
-yarn ios
-```
+   ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+4. Install iOS dependencies:
+   ```sh
+   cd ios
+   pod install
+   cd ..
+   ```
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+## Running the App
 
-## Step 3: Modifying your App
+- iOS:
 
-Now that you have successfully run the app, let's modify it.
+  ```sh
+  yarn react-native run-ios
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+  ```
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+- Android:
+  ```sh
+  yarn react-native run-android
+  ```
 
-## Congratulations! :tada:
+## Usage
 
-You've successfully run and modified your React Native App. :partying_face:
+| Feature     | Description                                                             |
+| ----------- | ----------------------------------------------------------------------- |
+| Home View   | Displays a list of all characters. Scroll down to load more characters. |
+| Detail View | Click on a character to see detailed information.                       |
+| Search      | Use the search bar to find characters by name.                          |
+| Favorites   | Add characters to your favorites and view them in the Favorites tab.    |
 
-### Now what?
+## Dependencies
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+- **react-native**: Framework for building native apps using React.
+- **@reduxjs/toolkit**: Official, opinionated, batteries-included toolset for efficient Redux development.
+- **axios**: Promise based HTTP client for the browser and node.js.
+- **@react-navigation/native**: Routing and navigation for your React Native apps.
+- **@react-navigation/stack**: Stack navigator for React Navigation.
+- **@react-native-async-storage/async-storage**: An asynchronous, persistent, key-value storage system for React Native.
+- **typescript**: JavaScript with syntax for types.
 
-# Troubleshooting
+## License
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+This project is licensed under the MIT License.
