@@ -1,15 +1,14 @@
 import React, {useEffect} from 'react';
 import {FlatList} from 'react-native';
 
+import {useAppDispatch, useAppSelector} from '@state/hooks';
 import {loadFavorites, removeFavorite} from '../state/favorites/favoritesSlice';
 
 import {SafeAreaViewWithTabBar, Text, View} from '@components/common';
-
-import {useAppDispatch, useAppSelector} from '@state/hooks';
-
 import FavoriteItem from '@components/FavoriteItem';
-import {globalStyles} from '@styles/global';
 import NoResults from '@components/NoResults';
+
+import {globalStyles} from '@styles/global';
 
 const FavoritesScreen = () => {
   const dispatch = useAppDispatch();

@@ -1,15 +1,19 @@
 import React, {useEffect} from 'react';
 import {ActivityIndicator} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {Routes} from '@navigation/Routes';
-import {fetchCharacterById} from '@state/characters';
-import {globalStyles} from '@styles/global';
-import CharacterDetail from '@components/CharacterDetail';
 
-import {View, Text} from '@components/common';
-import ScreenContainer from '@components/ScreenContainer';
 import {useAppDispatch, useAppSelector} from '@state/hooks';
+import {fetchCharacterById} from '@state/characters';
+
+import {Routes} from '@navigation/Routes';
+
+import CharacterDetail from '@components/CharacterDetail';
+import {View} from '@components/common';
+import ScreenContainer from '@components/ScreenContainer';
 import FavoriteButton from '@components/FavoriteButton';
+import NoResults from '@components/NoResults';
+
+import {globalStyles} from '@styles/global';
 
 type Props = NativeStackScreenProps<Routes, 'Detail'>;
 
@@ -40,11 +44,7 @@ const DetailScreen = ({route}: Props) => {
   }
 
   if (!character) {
-    return (
-      <View>
-        <Text>No character found</Text>
-      </View>
-    );
+    return <NoResults message="No character found" />;
   }
 
   return (
