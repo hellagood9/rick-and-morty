@@ -25,6 +25,7 @@ class MainActivity : ReactActivity() {
    * React native navigation (react-native-screens package configuration)
    */
   override fun onCreate(savedInstanceState: Bundle?) {
+    setTheme(R.style.AppTheme)
     super.onCreate(null)
   }
 }

@@ -10,6 +10,10 @@
   // You can add your custom initial props in the dictionary below.
   // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
+  
+  // Add a delay of 1 second (1000 milliseconds)
+  // The only purpose is to make the splash screen visible
+  [NSThread sleepForTimeInterval:1.0];
 
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
