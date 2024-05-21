@@ -10,6 +10,7 @@ import {useAppDispatch, useAppSelector} from '@state/hooks';
 import CharacterCard from '@components/CharacterCard';
 import {SafeAreaViewWithTabBar, View} from '@components/common/View';
 import spacing from '@constants/spacing';
+import SearchBar from '@components/SearchBar';
 
 const CharactersScreen = () => {
   const navigation = useAppNavigation();
@@ -44,6 +45,8 @@ const CharactersScreen = () => {
 
   return (
     <SafeAreaViewWithTabBar>
+      <SearchBar />
+
       <FlatList
         data={characters}
         keyExtractor={item => item.id.toString()}
