@@ -9,6 +9,7 @@ import {useAppDispatch, useAppSelector} from '@state/hooks';
 
 import FavoriteItem from '@components/FavoriteItem';
 import {globalStyles} from '@styles/global';
+import NoResults from '@components/NoResults';
 
 const FavoritesScreen = () => {
   const dispatch = useAppDispatch();
@@ -23,11 +24,7 @@ const FavoritesScreen = () => {
   };
 
   if (!favorites.length) {
-    return (
-      <View style={globalStyles.content}>
-        <Text>No favorites yet</Text>
-      </View>
-    );
+    return <NoResults message="No favorites yet" />;
   }
 
   return (
