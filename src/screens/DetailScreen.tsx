@@ -14,6 +14,7 @@ import FavoriteButton from '@components/FavoriteButton';
 import NoResults from '@components/NoResults';
 
 import {globalStyles} from '@styles/global';
+import CenteredView from '@components/CenteredView';
 
 type Props = NativeStackScreenProps<Routes, 'Detail'>;
 
@@ -33,14 +34,16 @@ const DetailScreen = ({route}: Props) => {
     }
   }, [dispatch, characterId]);
 
-  useEffect(() => {
-    if (error) {
-      console.error('Error:', error);
-    }
-  }, [status, character, error]);
-
   if (status === 'loading') {
-    return <ActivityIndicator size="large" />;
+    return (
+      <CenteredView>
+        <ActivityIndicator size="large" />
+      </CenteredView>
+    );
+  }
+
+  if (status === 'failed') {
+    return <NoResults message={`Error: ${error}`} />;
   }
 
   if (!character) {

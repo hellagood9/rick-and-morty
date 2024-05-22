@@ -39,7 +39,12 @@ const initialState: CharactersState = {
 const charactersSlice = createSlice({
   name: 'characters',
   initialState,
-  reducers: {},
+  reducers: {
+    clearSelectedCharacter(state) {
+      state.selectedCharacter = null;
+      state.episodes = [];
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchCharacters.pending, state => {
@@ -61,9 +66,17 @@ const charactersSlice = createSlice({
         state.status = 'failed';
         state.error = action.error.message;
       })
+      .addCase(fetchCharacterById.pending, state => {
+        state.status = 'loading';
+      })
       .addCase(fetchCharacterById.fulfilled, (state, action) => {
+        state.status = 'succeeded';
         state.selectedCharacter = action.payload.character;
         state.episodes = action.payload.episodes;
+      })
+      .addCase(fetchCharacterById.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
       })
       .addCase(fetchSearchCharacters.pending, state => {
         state.status = 'loading';
@@ -81,4 +94,5 @@ const charactersSlice = createSlice({
   },
 });
 
+export const {clearSelectedCharacter} = charactersSlice.actions;
 export default charactersSlice.reducer;

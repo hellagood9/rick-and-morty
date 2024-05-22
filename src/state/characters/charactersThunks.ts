@@ -5,6 +5,7 @@ import {
   searchCharacters,
   getEpisodesByIds,
 } from '@services/api/characters';
+import {clearSelectedCharacter} from './charactersSlice';
 
 export const fetchCharacters = createAsyncThunk(
   'characters/fetchCharacters',
@@ -20,7 +21,9 @@ export const fetchCharacters = createAsyncThunk(
 
 export const fetchCharacterById = createAsyncThunk(
   'characters/fetchCharacterById',
-  async (id: number) => {
+  async (id: number, {dispatch}) => {
+    dispatch(clearSelectedCharacter());
+
     const characterResponse = await getCharacterById(id);
     const character = characterResponse.data;
 
