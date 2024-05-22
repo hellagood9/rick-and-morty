@@ -1,7 +1,9 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {Text, View} from '@components/common';
+import {Text} from '@components/common';
+import CenteredView from '@components/CenteredView';
 import fonts from '@constants/fonts';
+import {colors} from '@constants/colors';
 
 interface NoResultsProps {
   message: string;
@@ -9,21 +11,16 @@ interface NoResultsProps {
 
 const NoResults: React.FC<NoResultsProps> = ({message}) => {
   return (
-    <View style={styles.container}>
+    <CenteredView>
       <Text style={styles.text}>{message}</Text>
-    </View>
+    </CenteredView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   text: {
     fontSize: fonts.size.medium,
-    color: 'gray',
+    color: colors.primary_TintColor,
   },
 });
 

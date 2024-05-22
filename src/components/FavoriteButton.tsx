@@ -6,23 +6,28 @@ import {Character} from '@models/Character';
 import iconSizes from '@constants/icons';
 import spacing from '@constants/spacing';
 import useFavorite from '@hooks/useFavorite';
+import {colors} from '@constants/colors';
 
 interface FavoriteButtonProps {
   character: Character;
+  isCentered?: boolean;
 }
 
-const FavoriteButton: React.FC<FavoriteButtonProps> = ({character}) => {
+const FavoriteButton: React.FC<FavoriteButtonProps> = ({
+  character,
+  isCentered = false,
+}) => {
   const {isFavorite, handleAddFavorite, handleRemoveFavorite} =
     useFavorite(character);
 
   return (
     <TouchableOpacity
       onPress={isFavorite ? handleRemoveFavorite : handleAddFavorite}
-      style={styles.button}>
+      style={[styles.button, {alignSelf: isCentered ? 'center' : 'flex-end'}]}>
       <Icon
         name={isFavorite ? 'heart' : 'heart-outline'}
         size={iconSizes.medium}
-        color="red"
+        color={isFavorite ? colors.critical : colors.text_secondary}
       />
     </TouchableOpacity>
   );

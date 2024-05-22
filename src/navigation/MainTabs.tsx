@@ -5,6 +5,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CharactersScreen from '@screens/CharactersScreen';
 import FavoritesScreen from '@screens/FavoritesScreen';
 import iconSizes from '@constants/icons';
+import {colors} from '@constants/colors';
+import fonts from '@constants/fonts';
 
 const Tab = createBottomTabNavigator();
 
@@ -27,18 +29,22 @@ function BottomTabs() {
       screenOptions={{
         headerShown: false,
         headerTitleAlign: 'center',
-        headerTintColor: 'pink',
+        headerTintColor: colors.header_TintColor,
         headerStyle: {
-          backgroundColor: 'purple',
+          backgroundColor: colors.header_BackgroundColor,
           borderBottomWidth: 1,
-          borderBottomColor: 'blue',
+          borderBottomColor: colors.tabBar_BorderColor,
         },
         tabBarStyle: {
-          borderTopColor: 'blue',
-          backgroundColor: 'orange',
+          borderTopColor: colors.tabBar_BorderColor,
+          backgroundColor: colors.tabBar_BackgroundColor,
         },
-        tabBarActiveTintColor: 'blue',
-        tabBarInactiveTintColor: 'pink',
+        tabBarLabelStyle: {
+          fontFamily: fonts.family.kodeMonoSemiBold,
+          fontSize: fonts.size.small,
+        },
+        tabBarActiveTintColor: colors.tabBar_ActiveTintColor,
+        tabBarInactiveTintColor: colors.tabBar_InactiveTintColor,
       }}>
       <Tab.Screen
         name="Characters"

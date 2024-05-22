@@ -1,8 +1,10 @@
 import React, {memo} from 'react';
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text} from '@components/common';
 import {Character} from '@models/Character';
 import fonts from '@constants/fonts';
 import spacing from '@constants/spacing';
+import {colors} from '@constants/colors';
 
 interface SearchResultItemProps {
   character: Character;
@@ -31,8 +33,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: spacing.small,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: colors.text_primary_subtle,
   },
   content: {
     flexDirection: 'row',
@@ -55,14 +57,6 @@ const styles = StyleSheet.create({
   touchable: {
     flex: 1,
     margin: spacing.tiny,
-  },
-  removeButton: {
-    backgroundColor: 'red',
-    padding: spacing.small,
-    borderRadius: 4,
-  },
-  removeButtonText: {
-    color: 'white',
   },
 });
 

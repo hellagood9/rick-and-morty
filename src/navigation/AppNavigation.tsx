@@ -6,6 +6,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import MainTabs from '@navigation/MainTabs';
 import DetailScreen from '@screens/DetailScreen';
 import {Routes} from './Routes';
+import {colors} from '@constants/colors';
 
 const Stack = createNativeStackNavigator<Routes>();
 
@@ -29,10 +30,17 @@ const AppNavigation = () => (
           title: 'Details',
           headerShown: Platform.OS === 'ios' ? false : true,
           headerTransparent: true,
-          headerTintColor: 'yellow',
+          headerTintColor: colors.primary_TintColor,
+          headerStyle: {
+            backgroundColor: colors.header_BackgroundColor,
+          },
           headerShadowVisible: false,
           headerTitleAlign: 'center',
-          presentation: Platform.OS === 'ios' ? 'modal' : 'card',
+          presentation: 'modal',
+
+          // Android
+          animationTypeForReplace: 'push',
+          animation: 'slide_from_right',
         }}
       />
     </Stack.Navigator>
